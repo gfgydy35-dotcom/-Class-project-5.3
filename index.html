@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Проекты 5.3 | Наш класс - наши работы!</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --main-blue: #4169E1;
+            --light-blue: #6495ED;
+            --yellow: #FFD700;
+            --red: #FF6B6B;
+            --green: #32CD32;
+            --orange: #FFA500;
+            --purple: #9370DB;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #E6F0FF 0%, #F0F8FF 100%);
+            color: #333;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* ШАПКА */
+        header {
+            background: linear-gradient(135deg, var(--main-blue), var(--light-blue));
+            color: white;
+            padding: 30px 20px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 20px rgba(65, 105, 225, 0.2);
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .class-name {
+            font-size: 2rem;
+            color: var(--yellow);
+            font-weight: bold;
+            margin: 15px 0;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        /* ИНФО О СОЗДАТЕЛЕ */
+        .creator-info {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px auto 30px;
+            max-width: 600px;
+            border-left: 5px solid var(--yellow);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .creator-info h3 {
+            color: var(--main-blue);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .creator-info h3 i {
+            color: var(--yellow);
+        }
+        
+        /* РАЗДЕЛЫ ПРОЕКТОВ */
+        .project-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+        
+        .project-type {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+            border-top: 5px solid;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .project-type:hover {
+            transform: translateY(-10px);
+        }
+        
+        .project-type::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+        }
+        
+        .study { border-color: var(--main-blue); }
+        .creative { border-color: var(--purple); }
+        .progress { border-color: var(--green); }
+        .sport { border-color: var(--orange); }
+        
+        .project-type h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #333;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .project-type h2 i {
+            font-size: 2.2rem;
+        }
+        
+        .study h2 i { color: var(--main-blue); }
+        .creative h2 i { color: var(--purple); }
+        .progress h2 i { color: var(--green); }
+        .sport h2 i { color: var(--orange); }
+        
+        /* СПИСОК ЧЕГО ЖДЕМ */
+        .waiting-list {
+            list-style: none;
+            margin-top: 20px;
+        }
+        
+        .waiting-list li {
+            padding: 10px 0;
+            border-bottom: 1px dashed #eee;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .waiting-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .waiting-list i {
+            color: var(--yellow);
+        }
+        
+        /* КАК ДОБАВИТЬ СВОЮ РАБОТУ */
+        .how-to-add {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 40px 0;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            border: 3px solid var(--yellow);
+        }
+        
+        .how-to-add h2 {
+            color: var(--main-blue);
+            margin-bottom: 25px;
+            text-align: center;
+            font-size: 2rem;
+        }
+        
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .step {
+            text-align: center;
+            padding: 25px;
+            border-radius: 15px;
+            background: #f8f9ff;
+        }
+        
+        .step-number {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: var(--main-blue);
+            color: white;
+            border-radius: 50%;
+            line-height: 40px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        /* ФУТЕР */
+        footer {
+            background: var(--main-blue);
+            color: white;
+            padding: 30px 20px;
+            border-radius: 20px;
+            margin-top: 50px;
+            text-align: center;
+        }
+        
+        .footer-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        
+        .footer-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255,255,255,0.1);
+            padding: 10px 20px;
+            border-radius: 10px;
+        }
+        
+        .copyright {
+            margin-top: 25px;
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+        
+        /* КНОПКА ПЛЮСИК */
+        .add-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: var(--red);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(255,107,107,0.4);
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+        
+        .add-btn:hover {
+            transform: scale(1.1) rotate(90deg);
+            box-shadow: 0 8px 25px rgba(255,107,107,0.6);
+        }
+        
+        /* АДАПТИВНОСТЬ */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .class-name {
+                font-size: 1.5rem;
+            }
+            
+            .project-type {
+                padding: 20px;
+            }
+            
+            .footer-info {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+        
+        /* ВСПЛЫВАЮЩЕЕ ОКНО */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            position: relative;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #666;
+        }
+        
+        .modal h2 {
+            color: var(--main-blue);
+            margin-bottom: 20px;
+        }
+        
+        .modal p {
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+        
+        .modal-important {
+            background: #FFF3CD;
+            border-left: 4px solid var(--yellow);
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- ШАПКА -->
+        <header>
+            <h1>ПРОЕКТЫ НАШЕГО КЛАССА</h1>
+            <div class="class-name">5.3 "Без учителя"</div>
+            <p class="subtitle">Здесь мы собираем все наши крутые работы и достижения!</p>
+        </header>
+        
+        <!-- ИНФОРМАЦИЯ О СОЗДАТЕЛЕ -->
+        <div class="creator-info">
+            <h3><i class="fas fa-user-cog"></i> ВНИМАНИЕ!</h3>
+            <p>Хочешь добавить свою работу на сайт?</p>
+            <p style="margin-top: 10px; font-weight: bold; color: var(--main-blue);">
+                Обратитесь к Новикову Илье (создателю) в классе 
+                или напишите ему в группу "Без учителя".
+            </p>
+        </div>
+        
+        <!-- РАЗДЕЛЫ ПРОЕКТОВ -->
+        <div class="project-types">
+            <!-- УЧЕБНЫЕ ПРОЕКТЫ -->
+            <div class="project-type study">
+                <h2><i class="fas fa-book-open"></i> Учебные проекты</h2>
+                <p>Здесь будут ваши школьные проекты, доклады и исследования по предметам</p>
+                
+                <ul class="waiting-list">
+                    <li><i class="fas fa-clock"></i> Проект по природоведению</li>
+                    <li><i class="fas fa-clock"></i> Доклад по истории</li>
+                    <li><i class="fas fa-clock"></i> Исследование по математике</li>
+                    <li><i class="fas fa-clock"></i> Сочинения и изложения</li>
+                </ul>
+                
+                <p style="margin-top: 20px; color: var(--main-blue); font-weight: bold;">
+                    Ждём ваши работы!
+                </p>
+            </div>
+            
+            <!-- ТВОРЧЕСКИЕ РАБОТЫ -->
+            <div class="project-type creative">
+                <h2><i class="fas fa-palette"></i> Творческие работы</h2>
+                <p>Рисунки, поделки, стихи, рассказы — всё, что создано вашими руками</p>
+                
+                <ul class="waiting-list">
+                    <li><i class="fas fa-clock"></i> Рисунки на конкурс</li>
+                    <li><i class="fas fa-clock"></i> Поделки из природных материалов</li>
+                    <li><i class="fas fa-clock"></i> Стихи собственного сочинения</li>
+                    <li><i class="fas fa-clock"></i> Фотографии с мероприятий</li>
+                    <li><i class="fas fa-clock"></i> Видео-проекты класса</li>
+                </ul>
+                
+                <p style="margin-top: 20px; color: var(--purple); font-weight: bold;">
+                    Покажите ваше творчество!
+                </p>
+            </div>
+            
+            <!-- ПРОГРЕСС УЧЕНИКОВ -->
+            <div class="project-type progress">
+                <h2><i class="fas fa-chart-line"></i> Прогресс каждого</h2>
+                <p>Здесь будут графики успеваемости и личные достижения учеников</p>
+                
+                <ul class="waiting-list">
+                    <li><i class="fas fa-clock"></i> Графики улучшения оценок</li>
+                    <li><i class="fas fa-clock"></i> Личные рекорды в учёбе</li>
+                    <li><i class="fas fa-clock"></i> Цели и их достижение</li>
+                    <li><i class="fas fa-clock"></i> Успехи в чтении и письме</li>
+                </ul>
+                
+                <p style="margin-top: 20px; color: var(--green); font-weight: bold;">
+                    Отслеживаем рост вместе!
+                </p>
+            </div>
+            
+            <!-- СПОРТИВНЫЕ ДОСТИЖЕНИЯ -->
+            <div class="project-type sport">
+                <h2><i class="fas fa-trophy"></i> Спортивные достижения</h2>
+                <p>Награды, рекорды и победы на физкультуре и соревнованиях</p>
+                
+                <ul class="waiting-list">
+                    <li><i class="fas fa-clock"></i> Нормативы по физкультуре</li>
+                    <li><i class="fas fa-clock"></i> Медали с соревнований</li>
+                    <li><i class="fas fa-clock"></i> Личные спортивные рекорды</li>
+                    <li><i class="fas fa-clock"></i> Фото с эстафет и игр</li>
+                </ul>
+                
+                <p style="margin-top: 20px; color: var(--orange); font-weight: bold;">
+                    Гордимся нашими спортсменами!
+                </p>
+            </div>
+        </div>
+        
+        <!-- КАК ДОБАВИТЬ СВОЮ РАБОТУ -->
+        <div class="how-to-add">
+            <h2>Как добавить свою работу на сайт?</h2>
+            
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Создай работу</h3>
+                    <p>Сделай проект, рисунок или подготовь информацию о своём достижении</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Сфотографируй</h3>
+                    <p>Сделай качественное фото или сканы своей работы</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Найди Илью</h3>
+                    <p>Подойди к Новикову Илье в классе или напиши в группу</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Радуйся!</h3>
+                    <p>Твоя работа появится на сайте и её увидят все</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- ФУТЕР -->
+    <footer>
+        <div class="container">
+            <h2 style="color: var(--yellow);">Наш класс — лучший!</h2>
+            
+            <div class="footer-info">
+                <div class="footer-item">
+                    <i class="fas fa-users"></i>
+                    <span>Класс 5.3</span>
+                </div>
+                
+                <div class="footer-item">
+                    <i class="fas fa-star"></i>
+                    <span>Только реальные работы</span>
+                </div>
+                
+                <div class="footer-item">
+                    <i class="fas fa-heart"></i>
+                    <span>Гордимся каждым учеником</span>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>Сайт создан для класса 5.3 "Без учителя"</p>
+                <p style="margin-top: 5px;">Все работы добавлены самими учениками</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- КНОПКА ПЛЮСИК -->
+    <div class="add-btn" id="addBtn">
+        <i class="fas fa-plus"></i>
+    </div>
+    
+    <!-- ВСПЛЫВАЮЩЕЕ ОКНО -->
+    <div class="modal" id="infoModal">
+        <div class="modal-content">
+            <div class="close-modal" id="closeModal">&times;</div>
+            <h2>Хочешь добавить свою работу?</h2>
+            <p>Отлично! Мы хотим видеть именно ТВОИ проекты, рисунки и достижения!</p>
+            
+            <div class="modal-important">
+                <p><strong>ВАЖНО:</strong></p>
+                <p>Подойди к <strong>Новикову Илье</strong> в нашем классе или напиши ему сообщение в группе "Без учителя".</p>
+                <p>Принеси свою работу (или фото работы), и она появится на сайте!</p>
+            </div>
+            
+            <p style="color: var(--main-blue); font-weight: bold;">
+                Не стесняйся — покажи всем, на что ты способен!
+            </p>
+        </div>
+    </div>
+    
+    <script>
+        // Открытие модального окна
+        document.getElementById('addBtn').addEventListener('click', function() {
+            document.getElementById('infoModal').style.display = 'flex';
+        });
+        
+        // Закрытие модального окна
+        document.getElementById('closeModal').addEventListener('click', function() {
+            document.getElementById('infoModal').style.display = 'none';
+        });
+        
+        // Закрытие при клике вне окна
+        window.addEventListener('click', function(event) {
+            const modal = document.getElementById('infoModal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+        
+        // Анимация при загрузке
+        document.addEventListener('DOMContentLoaded', function() {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s';
+            
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+            
+            // Плавное появление блоков
+            const projectTypes = document.querySelectorAll('.project-type');
+            projectTypes.forEach((type, index) => {
+                type.style.opacity = '0';
+                type.style.transform = 'translateY(30px)';
+                type.style.transition = 'opacity 0.5s, transform 0.5s';
+                
+                setTimeout(() => {
+                    type.style.opacity = '1';
+                    type.style.transform = 'translateY(0)';
+                }, 300 + index * 100);
+            });
+        });
+        
+        // Эффект при наведении на кнопку плюсик
+        const addBtn = document.getElementById('addBtn');
+        addBtn.addEventListener('mouseenter', function() {
+            this.innerHTML = '<i class="fas fa-hand-point-up"></i>';
+        });
+        
+        addBtn.addEventListener('mouseleave', function() {
+            this.innerHTML = '<i class="fas fa-plus"></i>';
+        });
+        
+        // Простая анимация для шагов
+        const steps = document.querySelectorAll('.step');
+        steps.forEach(step => {
+            step.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.05)';
+            });
+            
+            step.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
