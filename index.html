@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Проекты 5.3 | Наш класс - наши работы!</title>
+    <title>Проекты 5.3 | Наш класс - наши работы и достижения!</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -99,6 +99,90 @@
             font-weight: bold;
         }
         
+        /* БЛОК ДОСТИЖЕНИЙ (НОВЫЙ) */
+        .achievement-block {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin: 30px auto;
+            box-shadow: 0 12px 25px rgba(0,0,0,0.1);
+            border: 2px solid var(--main-blue);
+            max-width: 1000px;
+        }
+        
+        .achievement-title {
+            color: var(--main-blue);
+            font-size: 2rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border-bottom: 3px solid var(--yellow);
+            padding-bottom: 15px;
+        }
+        
+        .achievement-date {
+            background: var(--yellow);
+            color: #333;
+            padding: 5px 15px;
+            border-radius: 30px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+        }
+        
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+        
+        .photo-card {
+            background: #f8f9ff;
+            border-radius: 15px;
+            padding: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+            border: 1px solid #e0e7ff;
+        }
+        
+        .photo-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(65, 105, 225, 0.1);
+        }
+        
+        .photo-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 12px;
+            border: 3px solid white;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin-bottom: 12px;
+        }
+        
+        .photo-caption {
+            text-align: center;
+            font-weight: bold;
+            color: var(--main-blue);
+        }
+        
+        .achievement-description {
+            background: #F0F7FF;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0 10px;
+            font-size: 1.1rem;
+            border-left: 6px solid var(--green);
+        }
+        
+        .achievement-description i {
+            color: var(--green);
+            margin-right: 8px;
+        }
+        
         /* РАЗДЕЛЫ ПРОЕКТОВ */
         .project-types {
             display: grid;
@@ -167,29 +251,6 @@
         .waiting-list i {
             color: var(--yellow);
             min-width: 20px;
-        }
-        
-        /* ИНФО О КАРТИНКАХ */
-        .no-images-info {
-            background: #E8F4FD;
-            border-radius: 15px;
-            padding: 25px;
-            margin: 30px 0;
-            border-left: 5px solid var(--light-blue);
-            text-align: center;
-        }
-        
-        .no-images-info h3 {
-            color: var(--main-blue);
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-        
-        .no-images-info h3 i {
-            color: var(--main-blue);
         }
         
         /* КАК ДОБАВИТЬ СВОЮ РАБОТУ */
@@ -321,6 +382,10 @@
             .steps {
                 grid-template-columns: 1fr;
             }
+            
+            .photo-gallery {
+                grid-template-columns: 1fr;
+            }
         }
         
         /* ВСПЛЫВАЮЩЕЕ ОКНО */
@@ -395,10 +460,45 @@
             
             <div class="important-note">
                 <i class="fas fa-exclamation-triangle"></i>
-                Мы уже научились мы умеем вставлять картинки на сайт
+                Мы уже научились вставлять картинки на сайт!
                 <i class="fas fa-exclamation-triangle"></i>
             </div>
         </div>
+
+        <!-- НАШИ ДОСТИЖЕНИЯ: ПОЕЗДКА В ПАРК "ПАТРИОТ" (ТЕКСТ БЕЗ ИСПРАВЛЕНИЙ) -->
+        <div class="achievement-block">
+            <div class="achievement-title">
+                <i class="fas fa-star" style="color: var(--yellow);"></i>
+                Наше яркое событие: Партизанская деревня и парк «Патриот»
+            </div>
+            <div class="achievement-date">
+                <i class="far fa-calendar-alt"></i> 08 апреля 2026 года
+            </div>
+            
+            <div class="photo-gallery">
+                <!-- Первая картинка - ГЛАВНЫЙ ХРАМ ВООРУЖЕННЫХ СИЛ -->
+                <div class="photo-card">
+                    <img src="https://хостинг-картинок.рф/i/676a2936-7173-41e1-8633-1c23122e877d/000_3bcd2bda.jpg" alt="Главный храм Вооружённых Сил России в парке Патриот" loading="lazy">
+                    <div class="photo-caption">
+                        <i class="fas fa-church"></i> Главный храм Вооружённых Сил
+                    </div>
+                </div>
+                <!-- Вторая картинка - ПАРТИЗАНСКАЯ ДЕРЕВНЯ -->
+                <div class="photo-card">
+                    <img src="https://хостинг-картинок.рф/i/6206b2bd-789a-4f51-b742-b21ab69b6e3f/000_e5b719f8.png" alt="Партизанская деревня 5.3 класс" loading="lazy">
+                    <div class="photo-caption">
+                        <i class="fas fa-tree"></i> Партизанская деревня
+                    </div>
+                </div>
+            </div>
+            
+            <!-- ВАЖНО: ТЕКСТ СТРОГО ПО ЗАПРОСУ, БЕЗ ИСПРАВЛЕНИЙ -->
+            <div class="achievement-description">
+                <p><i class="fas fa-users"></i> <strong>08.04.2026 Наш класс 5.3 и другие классы посетили Партизанскую деревню. Затем мы отправились в военно-патриотический парк «Патриот» под Кубинкой, чтобы увидеть Главный храм Вооружённых Сил России.</strong></p>
+                <p style="margin-top: 15px;"><i class="fas fa-heart" style="color: var(--red);"></i> Спасибо организаторам и классному руководителю за эту поездку.</p>
+            </div>
+        </div>
+
         <!-- РАЗДЕЛЫ ПРОЕКТОВ -->
         <div class="project-types">
             <!-- УЧЕБНЫЕ ПРОЕКТЫ -->
@@ -496,7 +596,7 @@
                 
                 <div class="step">
                     <div class="step-number">3</div>
-                    <h3>Навиши в группу</h3>
+                    <h3>Напиши в группу</h3>
                     <p>Напиши в группу без учителя</p>
                 </div>
                 
@@ -538,7 +638,7 @@
             
             <div class="copyright">
                 <p>Сайт создан для класса 5.3</p>
-                <p style="margin-top: 5px;">Мы учимся программировать!</p>
+                <p style="margin-top: 5px;">Мы учимся программировать! А ещё мы были в парке "Патриот"!</p>
             </div>
         </div>
     </footer>
@@ -601,7 +701,7 @@
             }, 100);
             
             // Появление блоков с задержкой
-            const elements = document.querySelectorAll('.project-type, .no-images-info, .how-to-add');
+            const elements = document.querySelectorAll('.project-type, .how-to-add, .achievement-block');
             elements.forEach((el, index) => {
                 el.style.opacity = '0';
                 el.style.transform = 'translateY(20px)';
