@@ -64,50 +64,69 @@
             font-size: 1.2rem;
             opacity: 0.9;
         }
-        
-        /* ИНФО О СОЗДАТЕЛЕ */
-        .creator-info {
-            background: white;
-            border-radius: 15px;
-            padding: 25px;
-            margin: 20px auto 30px;
-            max-width: 700px;
-            border-left: 5px solid var(--yellow);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+
+        /* КНОПКА ДОСТИЖЕНИЯ */
+        .achievements-btn-container {
             text-align: center;
+            margin: 20px 0 10px;
         }
         
-        .creator-info h3 {
-            color: var(--main-blue);
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-        
-        .creator-info h3 i {
-            color: var(--yellow);
-        }
-        
-        .important-note {
-            background: #FFF3CD;
-            border: 2px solid var(--yellow);
-            border-radius: 10px;
-            padding: 15px;
-            margin-top: 20px;
+        .achievements-btn {
+            background: linear-gradient(145deg, var(--orange), #ff8c00);
+            color: white;
+            border: none;
+            padding: 16px 40px;
+            font-size: 1.4rem;
             font-weight: bold;
+            border-radius: 50px;
+            box-shadow: 0 8px 0 #b85e00, 0 10px 20px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: all 0.1s ease;
+            border: 2px solid #fff3e0;
+            letter-spacing: 1px;
         }
         
-        /* БЛОК ДОСТИЖЕНИЙ (НОВЫЙ) */
+        .achievements-btn i {
+            margin-right: 12px;
+            color: var(--yellow);
+            text-shadow: 1px 1px 0 #b85e00;
+        }
+        
+        .achievements-btn:hover {
+            transform: translateY(3px);
+            box-shadow: 0 5px 0 #b85e00, 0 8px 15px rgba(0,0,0,0.1);
+        }
+        
+        .achievements-btn:active {
+            transform: translateY(8px);
+            box-shadow: 0 0 0 #b85e00, 0 5px 10px rgba(0,0,0,0.1);
+        }
+        
+        /* БЛОК ДОСТИЖЕНИЙ (СКРЫТ ПО УМОЛЧАНИЮ) */
+        .achievements-section {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: max-height 0.6s ease-in-out, opacity 0.4s ease, margin 0.3s;
+            margin: 0 auto;
+            visibility: hidden;
+        }
+        
+        .achievements-section.show {
+            max-height: 1500px; /* Достаточно для контента */
+            opacity: 1;
+            visibility: visible;
+            margin: 30px auto;
+        }
+        
         .achievement-block {
             background: white;
             border-radius: 20px;
             padding: 30px;
-            margin: 30px auto;
             box-shadow: 0 12px 25px rgba(0,0,0,0.1);
-            border: 2px solid var(--main-blue);
+            border: 3px solid var(--orange);
             max-width: 1000px;
+            margin: 0 auto;
         }
         
         .achievement-title {
@@ -181,6 +200,31 @@
         .achievement-description i {
             color: var(--green);
             margin-right: 8px;
+        }
+        
+        /* ИНФО О СОЗДАТЕЛЕ */
+        .creator-info {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px auto 30px;
+            max-width: 700px;
+            border-left: 5px solid var(--yellow);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .creator-info h3 {
+            color: var(--main-blue);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .creator-info h3 i {
+            color: var(--yellow);
         }
         
         /* РАЗДЕЛЫ ПРОЕКТОВ */
@@ -448,6 +492,13 @@
             <h1>ПРОЕКТЫ НАШЕГО КЛАССА</h1>
             <div class="class-name">КЛАСС 5.3</div>
             <p class="subtitle">Здесь мы собираем все наши крутые работы и достижения!</p>
+            
+            <!-- КНОПКА ДОСТИЖЕНИЯ КЛАССА (ДОБАВЛЕНА) -->
+            <div class="achievements-btn-container">
+                <button class="achievements-btn" id="showAchievementsBtn">
+                    <i class="fas fa-trophy"></i> ДОСТИЖЕНИЯ КЛАССА
+                </button>
+            </div>
         </header>
         
         <!-- ИНФОРМАЦИЯ О СОЗДАТЕЛЕ -->
@@ -457,45 +508,40 @@
             <p style="margin-top: 10px; font-weight: bold; color: var(--main-blue); font-size: 1.1rem;">
                 Обратитесь к группе Без учителя 5.3.
             </p>
-            
-            <div class="important-note">
-                <i class="fas fa-exclamation-triangle"></i>
-                Мы уже научились вставлять картинки на сайт!
-                <i class="fas fa-exclamation-triangle"></i>
-            </div>
         </div>
 
-        <!-- НАШИ ДОСТИЖЕНИЯ: ПОЕЗДКА В ПАРК "ПАТРИОТ" (ТЕКСТ БЕЗ ИСПРАВЛЕНИЙ) -->
-        <div class="achievement-block">
-            <div class="achievement-title">
-                <i class="fas fa-star" style="color: var(--yellow);"></i>
-                Наше яркое событие: Партизанская деревня и парк «Патриот»
-            </div>
-            <div class="achievement-date">
-                <i class="far fa-calendar-alt"></i> 08 апреля 2026 года
-            </div>
-            
-            <div class="photo-gallery">
-                <!-- Первая картинка - ГЛАВНЫЙ ХРАМ ВООРУЖЕННЫХ СИЛ -->
-                <div class="photo-card">
-                    <img src="https://хостинг-картинок.рф/i/676a2936-7173-41e1-8633-1c23122e877d/000_3bcd2bda.jpg" alt="Главный храм Вооружённых Сил России в парке Патриот" loading="lazy">
-                    <div class="photo-caption">
-                        <i class="fas fa-church"></i> Главный храм Вооружённых Сил
+        <!-- СЕКЦИЯ С ДОСТИЖЕНИЯМИ (СКРЫТА, ПОКАЗЫВАЕТСЯ ПО КНОПКЕ) -->
+        <div class="achievements-section" id="achievementsSection">
+            <div class="achievement-block">
+                <div class="achievement-title">
+                    <i class="fas fa-star" style="color: var(--yellow);"></i>
+                    Наше яркое событие: Партизанская деревня и парк «Патриот»
+                </div>
+                <div class="achievement-date">
+                    <i class="far fa-calendar-alt"></i> 08 апреля 2026 года
+                </div>
+                
+                <div class="photo-gallery">
+                    <!-- Первая картинка - ГЛАВНЫЙ ХРАМ ВООРУЖЕННЫХ СИЛ -->
+                    <div class="photo-card">
+                        <img src="https://хостинг-картинок.рф/i/676a2936-7173-41e1-8633-1c23122e877d/000_3bcd2bda.jpg" alt="Главный храм Вооружённых Сил России в парке Патриот" loading="lazy">
+                        <div class="photo-caption">
+                            <i class="fas fa-church"></i> Главный храм Вооружённых Сил
+                        </div>
+                    </div>
+                    <!-- Вторая картинка - ПАРТИЗАНСКАЯ ДЕРЕВНЯ -->
+                    <div class="photo-card">
+                        <img src="https://хостинг-картинок.рф/i/6206b2bd-789a-4f51-b742-b21ab69b6e3f/000_e5b719f8.png" alt="Партизанская деревня 5.3 класс" loading="lazy">
+                        <div class="photo-caption">
+                            <i class="fas fa-tree"></i> Партизанская деревня
+                        </div>
                     </div>
                 </div>
-                <!-- Вторая картинка - ПАРТИЗАНСКАЯ ДЕРЕВНЯ -->
-                <div class="photo-card">
-                    <img src="https://хостинг-картинок.рф/i/6206b2bd-789a-4f51-b742-b21ab69b6e3f/000_e5b719f8.png" alt="Партизанская деревня 5.3 класс" loading="lazy">
-                    <div class="photo-caption">
-                        <i class="fas fa-tree"></i> Партизанская деревня
-                    </div>
+                
+                <div class="achievement-description">
+                    <p><i class="fas fa-users"></i> <strong>08.04.2026 Наш класс 5.3 и другие классы посетили Партизанскую деревню. Затем мы отправились в военно-патриотический парк «Патриот» под Кубинкой, чтобы увидеть Главный храм Вооружённых Сил России.</strong></p>
+                    <p style="margin-top: 15px;"><i class="fas fa-heart" style="color: var(--red);"></i> Спасибо организаторам и классному руководителю за эту поездку.</p>
                 </div>
-            </div>
-            
-            <!-- ВАЖНО: ТЕКСТ СТРОГО ПО ЗАПРОСУ, БЕЗ ИСПРАВЛЕНИЙ -->
-            <div class="achievement-description">
-                <p><i class="fas fa-users"></i> <strong>08.04.2026 Наш класс 5.3 и другие классы посетили Партизанскую деревню. Затем мы отправились в военно-патриотический парк «Патриот» под Кубинкой, чтобы увидеть Главный храм Вооружённых Сил России.</strong></p>
-                <p style="margin-top: 15px;"><i class="fas fa-heart" style="color: var(--red);"></i> Спасибо организаторам и классному руководителю за эту поездку.</p>
             </div>
         </div>
 
@@ -672,6 +718,21 @@
     </div>
     
     <script>
+        // Открытие/закрытие секции с достижениями по кнопке
+        const achievementsBtn = document.getElementById('showAchievementsBtn');
+        const achievementsSection = document.getElementById('achievementsSection');
+        
+        achievementsBtn.addEventListener('click', function() {
+            achievementsSection.classList.toggle('show');
+            
+            // Меняем текст кнопки (опционально)
+            if (achievementsSection.classList.contains('show')) {
+                achievementsBtn.innerHTML = '<i class="fas fa-times-circle"></i> СКРЫТЬ ДОСТИЖЕНИЯ';
+            } else {
+                achievementsBtn.innerHTML = '<i class="fas fa-trophy"></i> ДОСТИЖЕНИЯ КЛАССА';
+            }
+        });
+        
         // Открытие модального окна
         document.getElementById('addBtn').addEventListener('click', function() {
             document.getElementById('infoModal').style.display = 'flex';
@@ -692,7 +753,6 @@
         
         // Анимация при загрузке
         document.addEventListener('DOMContentLoaded', function() {
-            // Плавное появление
             document.body.style.opacity = '0';
             document.body.style.transition = 'opacity 0.5s';
             
@@ -700,8 +760,7 @@
                 document.body.style.opacity = '1';
             }, 100);
             
-            // Появление блоков с задержкой
-            const elements = document.querySelectorAll('.project-type, .how-to-add, .achievement-block');
+            const elements = document.querySelectorAll('.project-type, .how-to-add, .creator-info');
             elements.forEach((el, index) => {
                 el.style.opacity = '0';
                 el.style.transform = 'translateY(20px)';
@@ -714,24 +773,20 @@
             });
         });
         
-        // Простая анимация для шагов
         const steps = document.querySelectorAll('.step');
         steps.forEach(step => {
             step.addEventListener('mouseenter', function() {
                 this.style.transform = 'scale(1.03)';
             });
-            
             step.addEventListener('mouseleave', function() {
                 this.style.transform = 'scale(1)';
             });
         });
         
-        // Анимация для кнопки плюсик
         const addBtn = document.getElementById('addBtn');
         addBtn.addEventListener('mouseenter', function() {
             this.style.transform = 'scale(1.1) rotate(90deg)';
         });
-        
         addBtn.addEventListener('mouseleave', function() {
             this.style.transform = 'scale(1) rotate(0deg)';
         });
